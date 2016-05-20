@@ -5,6 +5,121 @@
 	<title></title>
 </head>
 <body>
-gg
+<script>
+    var url;
+    // 创建XHR对象的兼容写法
+    function createXHR(){
+        if(typeof XMLHttpRequest != 'undefined'){
+            // ie7+
+            return new XMLHttpRequest();
+        }else if(typeof ActiveXObject != 'undefined'){
+            if(typeof arguments.callee.activeXString != 'string'){
+                var versions = ["MSXML2.XMLHttp.6.0","MSXML2.XMLHttp.5.0", "MSXML2.XMLHttp.4.0","MSXML2.XMLHttp.3.0","MSXML2.XMLHttp","Microsoft.XMLHttp"],
+                    i,len;
+                for(i = 0, len = versions.length; i <len; i++){
+                    try{
+                        new ActiveXObject(versions[i]);
+                        arguments.callee.activeXString = versions[i];
+                        break;
+                    }catch(e){
+
+                    }
+                }
+            }
+            return new ActiveXObject(arguments.callee.activeXString);
+        }else{
+            throw new Error('No xhr object available');
+        }
+    }
+
+    var xhr = createXHR();
+
+    // 发送同步请求
+    xhr.open('get', url, false);
+    xhr.send(null);
+
+    // 响应： xhr.status xhr.statusText xhr.responseText xhr.responseXML
+    if((xhr.status >=200 && xhr.status < 300) || xhr.status == 304){
+        // xhr.responseText
+    }else{
+        // code ...
+    }
+
+
+    // 发送异步请求 readyStateChange 要在open前面
+    // readyState: 0 1 2 3 4
+    xhr.onreadystatechange = function(){
+        if(xhr.readyState == 4){ // 表示接收到全部的响应数据
+            if((xhr.status >=200 && xhr.status < 300) || xhr.status == 304){
+                // xhr.responseText
+
+                // 获取指定的请求头
+                var myHeader = xhr.getResponseHeader("MyHeader");
+                // 获取所有的请求头
+                var allHeaders = xhr.getAllResponseHeaders();
+            }else{
+                // code ...
+            }
+        }
+    };
+    xhr.open('get', url, true);
+
+    // 设置请求头
+    xhr.setRequestHeader("MyHeader", "MyValue");
+
+    xhr.send(null);
+    // xhr.abort() 取消异步请求 xhr对象会停止触发事件，不再允许访问任何和响应有关的对象属性
+
+
+
+    /*
+    * 请求类型：
+    *
+    * get请求：
+    *    1.向服务器查询信息
+    *    2.把查询字符串参数追加到url的末尾，把信息发送给服务器  xhr.open('get',"example.php?name1=value1&name2=value2",true)
+    *
+    * post请求
+    *   1.向服务器发送应该被保存的数据
+    *   2.post应该把发送的数据作为请求的主体提交
+    *   3.post请求和表单提交不同
+    *       使用xhr模仿表单提交
+    *       设置头信息
+    *           xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded')
+    *
+    * */
+
+    function addURLParam(url,name,value){
+        url += (url.indexOf('?') === -1 ? '?' : '&');
+        url += encodeURIComponent(name) + '=' + encodeURIComponent(value);
+        return url;
+    }
+    var path = 'example.php';
+    path = addURLParam(path,'name','jack');
+    path = addURLParam(path, 'age',11);
+
+
+    /*
+    * FormData 对象
+    *   var data = new FormDate()
+    *   data.append("name", "jack");
+    *
+    * 跨域资源共享
+    *   通过xhr实现ajax通信的一个主要限制： 来源于跨域安全策略
+    *   CORS Cross-Origin Resource Sharing
+    *
+    *   发送请求时 给一个头：包括请求页面的元信息--协议 端口 域名
+    *   Origin: http://www.baidu.com
+    *
+    *
+    *   服务器：如果认为这个请求可以接受，则在下面头信息回发相同的源信息
+    *   Access-Control-Allow-Origin : http://www.baidu.com
+    *
+    *   IE XDA
+    *
+    *
+    * */
+     console.log(path);
+</script>
 </body>
 </html>
