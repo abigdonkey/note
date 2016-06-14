@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .box1,.box2{
+            width: 100px;
+            height: 300px;
+        }
+        .box1{
+            float: left;
+            background: red;
+        }
+        .box2{
+            float: left;
+            background: green;
+        }
+        .wrap{
+            background: #ccc;
+            border: 1px solid blue;
+
+        }
+    </style>
+</head>
+<body>
+<div class="wrap">
+    <div class="box1">box1</div>
+    <div class="box2">box2</div>
+</div>
+
+<pre>
+    1.浮动产生的原因：
+        盒子内的对象使用了浮动，导致盒子（父对象）高度不能够被撑开
+        即父对象不能获取有效的高度
+    2.浮动的副作用
+        （1）背景不能够被显示--父元素不能获得有效的高度，如果设置了背景色或背景图片，则不能够显示出来
+        （2）边框不能够被撑开
+        总之，凡是需要高度的地方 都失效了
+    3.清楚浮动的方法
+        （1）设置父对象的高度
+                原理：手动设置了高度，解决了无法自动获取有效高度的问题
+                优点：简单 代码少 容易掌握
+                缺点：需要对对象的高度确定
+        （2）父对象设置overflow:hidden;
+        （3）伪类
+            .clearFix:after{
+                content: '';
+                display:block;
+                width:0;
+                height:0;
+                clear:both;
+            }
+            .clearFix{zoom:1}
+
+            原理：IE8以上和非IE浏览器才支持:after，原理和方法2有点类似，zoom(IE转有属性)可解决ie6,ie7浮动问题
+            优点：浏览器支持好，不容易出现怪问题（目前：大型网站都有使用，如：腾迅，网易，新浪等等）
+            缺点：代码多，不少初学者不理解原理，要两句代码结合使用，才能让主流浏览器都支持。
+
+        (4) clear:both;
+            在结尾处添加空的div，clear：both;
+            在父对象的<div/>结束前，增加一个空的div,增加类class=”clear”
+            .clert{clear:both;}
+            优点：简单，代码少，浏览器支持较好；
+            缺点：如果页面浮动布局较多，则需要添加很多的空div
+
+</pre>
+</body>
+</html>

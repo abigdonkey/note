@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            padding:0;
+            margin: 0;
+        }
+        html,body{
+            height: 100%;
+        }
+
+        .left,.right{
+            height: 100%;
+            width: 20%;
+            background: blue;
+
+            position: absolute;
+        }
+        .right{
+            right: 0;
+        }
+        .left{
+            left: 0;
+        }
+        .main{
+           height: 100%;
+            background: green;
+
+            margin: 0 20%;
+        }
+    </style>
+</head>
+<body>
+<div class="left">left</div>
+<div class="right">right</div>
+<div class="main">main content</div>
+<!--
+    注意：
+        1.html的结构 定位的左右 脱离文档流的在前面
+        2. main 的margin: 0 20%; 添加或去掉区别
+-->
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            padding:0;
+            margin: 0;
+        }
+        html,body{
+            height: 100%;
+        }
+
+        .grid {
+            display: -webkit-flex;
+            display: -moz-flex;
+            display: -o-flex;
+            display: -ms-flex;
+            display: flex; }
+        .col {  padding: 30px; }
+        .fluid {  flex: 1;  background: green;}
+        .fixed {  width: 400px; background: red }
+    </style>
+</head>
+<body>
+<div class="grid">
+    <div class="col fluid">left</div>
+    <div class="col fixed">main</div>
+    <div class="col fluid">right</div>
+</div>
+</body>
+</html>

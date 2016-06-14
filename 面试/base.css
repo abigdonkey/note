@@ -1,0 +1,12 @@
+@charset "utf-8";
+/* CSS Document */
+body, h1, h2, h3, h4, h5, h6, hr, p,blockquote, /* structural elements 结构元素 */
+dl, dt, dd, ul, ol, li, /* list elements 列表元素 */
+pre, /* text formatting elements 文本格式元素 */
+form, fieldset, legend, button, input, textarea, /* form elements 表单元素 */
+    /* table elements 表格元素 */
+img/* img elements 图片元素 */{
+    border:none;/*border:medium none;  medium是浏览器解析的时候，自动算进去的样式*/
+    margin: 0;
+    padding: 0;
+}

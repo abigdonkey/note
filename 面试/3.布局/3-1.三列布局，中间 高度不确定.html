@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>三列自使用高度</title>
+    <style>
+        body, p, ul { margin:0; padding:0; }
+        #wrap { overflow:hidden; width:1000px; margin:0 auto; }
+        #left, #center, #right { margin-bottom:-10000px; padding-bottom:10000px; }
+        #left { float:left; width:250px; background:#00FFFF; }
+        #center { float:left; width:500px; background:#FF0000;}
+        #right { float:right; width:250px; background:#00FF00; }
+    </style>
+</head>
+<body>
+<div id="wrap">
+    <div id="left">
+        <p>left</p>
+    </div>
+    <div id="center">
+        <p>center</p>
+        <p>center</p>
+        <p>center</p>
+        <p>center</p>
+        <p>center</p>
+        <p>center</p>
+        <p>center</p>
+        <p>center</p>
+        <p>center</p>
+        <p>center</p>
+        <p>center</p>
+        <p>center</p>
+        <p>center</p>
+        <p>center</p>
+        <p>center</p>
+        <p>center</p>
+        <p>center</p>
+        <p>center</p>
+        <p>center</p>
+        <p>center</p>
+        <p>center</p>
+        <p>center</p>
+        <p>center</p>
+        <p>center</p>
+        <p>center</p>
+        <p>center</p>
+    </div>
+    <div id="right">
+        <p>right</p>
+    </div>
+</div>
+<!--
+    主要利用“隐藏容器溢出”、“正内补丁”和“负外补丁”结合的方法实现的
+        #left, #center, #right { margin-bottom:-10000px; padding-bottom:10000px; }
+        这个值大小的确定
+-->
+</body>
+</html>
