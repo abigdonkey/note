@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .rel{
+            position: relative;
+            background: green;
+        }
+        .wrap{
+            width: 500px;
+            height: 500px;
+            background: #ccc;
+            margin-top: 100px;
+        }
+        .abs{
+            position: absolute;
+            background: blue;
+        }
+        .default{
+            background: red;
+        }
+    </style>
+</head>
+<body>
+<div class="rel">  此层只应用position：relative;样式  </div>
+<div class="abs"> 此层只应用position：absolute;样式</div>
+<div class="wrap">
+    <div class="abs">包含父层的absolute 此层只应用position：absolute;样式</div>
+</div>
+<div class="default"> 不应用样式</div>
+<pre>
+    1.absolute 不占位 relati  ve 占位
+        .rel的层在显示时，占用一行
+        .abs的层在显示时，不占行，只在下一行显示
+
+    2.默认情况下（不结合top等来定位），absolute（绝对定位）以父层来定位的 父层在哪 他则在哪
+    3.在结合top、bottom、right、left等属性时，absolute（绝对定位）以窗口做为定位，relative以自身的占位为基线做偏移！
+
+    4.在结合top、bottom、right、left等属性时，如果想absolute（绝对定位）能以父层做为定位基线的话，则在父层应用absolute或relativ属性就可以
+        absolute 父元素没设置定位或者static,则相对浏览器窗口进行定位，否则相对于父层窗口进行定位
+</pre>
+</body>
+</html>

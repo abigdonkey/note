@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+	<meta charset="UTF-8">
+	<title>cookies sessionStorage localStorage区别</title>
+</head>
+<body>
+<pre>
+    sessionStorage localStorage是HTML5的API提供的本地存储数据
+    有了本地数据，就避免了数据在服务器和浏览器之间不必要的来回传递
+
+    cookie sessionStorage localStorage都是在浏览器端存储数据的
+
+    sessionStorage，引入了“浏览器窗口”的概念。是在同源的窗口或者tab中，
+    始终存在的数据。只要这个浏览器窗口没有关闭，即使刷新页面或者进入同源的
+    另一页面，数据仍然存在。关闭窗口后，sessionStorage即被销毁。同时“独立”
+    打开不同窗口，即使同一页面，sessionStorage对象也是不同的。
+
+    Web Storage带来的好处：
+            减少网络流量：一旦数据存储在本地后，就可以避免再向服务器请求数据，
+        因此减少不必要的数据请求，减少数据在浏览器和服务器之间不必要的来回传递。
+            快速显示数据：性能好，从本地读取数据比通过网络从服务器获取数据要快的多，
+        本地数据可以即使获得。再加上网页本身也可以有缓存，因此整个页面和数据都在本地的话，可以立即显示。
+            临时存储：很多时候数据只需要在用户浏览一组页面期间使用，关闭窗口数据就可以丢弃了，这种情况下
+        使用sessionStorage就方便多了。
+
+    数据在浏览器端存储和在服务器端都可以存储，区别：
+        浏览器端可以保存一些数据，需要的时候直接从本地获取
+        服务器端也可以保存用户的所有数据，但需要d时候浏览器向服务器请求数据。
+            1.服务器端可以保存用户的持久数据，
+
+</pre>
+<script>
+
+</script>
+</body>
+</html>
